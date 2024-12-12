@@ -47,7 +47,7 @@
             // 
             // btnExport
             // 
-            this.btnExport.Location = new System.Drawing.Point(618, 330);
+            this.btnExport.Location = new System.Drawing.Point(450, 330);
             this.btnExport.Name = "btnExport";
             this.btnExport.Size = new System.Drawing.Size(101, 41);
             this.btnExport.TabIndex = 1;
@@ -58,16 +58,16 @@
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(208, 75);
+            this.dataGridView1.Location = new System.Drawing.Point(104, 68);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(343, 200);
+            this.dataGridView1.Size = new System.Drawing.Size(852, 200);
             this.dataGridView1.TabIndex = 2;
             // 
             // btnSM
             // 
-            this.btnSM.Location = new System.Drawing.Point(644, 188);
+            this.btnSM.Location = new System.Drawing.Point(864, 330);
             this.btnSM.Name = "btnSM";
             this.btnSM.Size = new System.Drawing.Size(81, 37);
             this.btnSM.TabIndex = 3;
@@ -79,7 +79,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1069, 445);
             this.Controls.Add(this.btnSM);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.btnExport);

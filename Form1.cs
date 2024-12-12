@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json.Linq;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -41,11 +42,11 @@ namespace exportExcel_v2
         DataTable table = new DataTable();
         private void Form1_Load(object sender, EventArgs e)
         {
-            table.Columns.Add("ID", typeof(int));
-            table.Columns.Add("Name", typeof(String));
-            table.Columns.Add("Age", typeof(int));
+            //table.Columns.Add("ID", typeof(int));
+            //table.Columns.Add("Name", typeof(String));
+            //table.Columns.Add("Age", typeof(int));
 
-            dataGridView1.DataSource = table;
+            //dataGridView1.DataSource = table;
         }
 
         private void btnExport_Click(object sender, EventArgs e)
@@ -101,12 +102,38 @@ namespace exportExcel_v2
             {
                 HttpResponseMessage response = await client.GetAsync("https://api.surveymonkey.com/v3/surveys/519696776/responses/118687483059/details");
                 string responseBody = await response.Content.ReadAsStringAsync();
-                MessageBox.Show(responseBody);
+                //MessageBox.Show(responseBody);
+
+                JObject jsonObj = JObject.Parse(responseBody);
+                var quizResults = jsonObj["quiz_results"];
+
+                DataTable dataTable = new DataTable();
+                dataTable.Columns.Add("Correct");
+                dataTable.Columns.Add("Incorrect");
+                dataTable.Columns.Add("Partially Correct");
+                dataTable.Columns.Add("Total Questions");
+                dataTable.Columns.Add("Score");
+                dataTable.Columns.Add("Total Score");
+
+                DataRow row = dataTable.NewRow();
+                row["Correct"] = quizResults["correct"];
+                row["Incorrect"] = quizResults["incorrect"];
+                row["Partially Correct"] = quizResults["partially_correct"];
+                row["Total Questions"] = quizResults["total_questions"];
+                row["Score"] = quizResults["score"];
+                row["Total Score"] = quizResults["total_score"];
+                dataTable.Rows.Add(row);
+
+                dataGridView1.DataSource = dataTable;
+
+                //File.WriteAllText("quiz_result.csv", csv);
             }
             catch (HttpRequestException ex)
             {
                 Console.WriteLine($"Request error:{ex.Message}");
             }
+            
+
         }
     }
 }
