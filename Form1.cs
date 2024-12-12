@@ -99,7 +99,7 @@ namespace exportExcel_v2
             
             try
             {
-                HttpResponseMessage response = await client.GetAsync("http://api.surveymonkey.com/v3/question_bank/question");
+                HttpResponseMessage response = await client.GetAsync("https://api.surveymonkey.com/v3/surveys/519696776/responses/118687483059/details");
                 string responseBody = await response.Content.ReadAsStringAsync();
                 MessageBox.Show(responseBody);
             }
