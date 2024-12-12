@@ -31,6 +31,7 @@
             this.btnLoad = new System.Windows.Forms.Button();
             this.btnExport = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.btnSM = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -57,18 +58,29 @@
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(193, 75);
+            this.dataGridView1.Location = new System.Drawing.Point(208, 75);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 24;
             this.dataGridView1.Size = new System.Drawing.Size(343, 200);
             this.dataGridView1.TabIndex = 2;
             // 
+            // btnSM
+            // 
+            this.btnSM.Location = new System.Drawing.Point(644, 188);
+            this.btnSM.Name = "btnSM";
+            this.btnSM.Size = new System.Drawing.Size(81, 37);
+            this.btnSM.TabIndex = 3;
+            this.btnSM.Text = "SM Get";
+            this.btnSM.UseVisualStyleBackColor = true;
+            this.btnSM.Click += new System.EventHandler(this.button1_Click_1);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btnSM);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.btnExport);
             this.Controls.Add(this.btnLoad);
@@ -85,6 +97,7 @@
         private System.Windows.Forms.Button btnLoad;
         private System.Windows.Forms.Button btnExport;
         private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Button btnSM;
     }
 }
 

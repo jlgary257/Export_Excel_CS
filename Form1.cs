@@ -5,6 +5,8 @@ using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -66,6 +68,45 @@ namespace exportExcel_v2
 
 
 
+        }
+
+        private async Task mainExport()
+        {
+            var client = new HttpClient();
+            client.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
+            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", "{fE6kbS5hk-qpNXBhMQm.uqzy9sXLrbwS804TMyqnNxrARydIp4shkZPIZfjHz.orCrc3g.Qj1JcVmQVTOYHB8BPLGTk9N-uu6IGSXMPrv2XKbTcEPqsTIohaok1un5sv}");
+
+            try
+            {
+                HttpResponseMessage response = await client.GetAsync("https://api.surveymonkey.com/v3/surveys/519696776/responses/118687483059/details");
+                response.EnsureSuccessStatusCode();
+                string responseBody = await response.Content.ReadAsStringAsync();
+                MessageBox.Show(responseBody);
+            }
+            catch (HttpRequestException e)
+            {
+                Console.WriteLine($"Request error:{e.Message}");
+            }
+        }
+
+        private async void button1_Click_1(object sender, EventArgs e)
+        {
+            
+
+            var client = new HttpClient();
+            client.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
+            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", "fE6kbS5hk-qpNXBhMQm.uqzy9sXLrbwS804TMyqnNxrARydIp4shkZPIZfjHz.orCrc3g.Qj1JcVmQVTOYHB8BPLGTk9N-uu6IGSXMPrv2XKbTcEPqsTIohaok1un5sv");
+            
+            try
+            {
+                HttpResponseMessage response = await client.GetAsync("http://api.surveymonkey.com/v3/question_bank/question");
+                string responseBody = await response.Content.ReadAsStringAsync();
+                MessageBox.Show(responseBody);
+            }
+            catch (HttpRequestException ex)
+            {
+                Console.WriteLine($"Request error:{ex.Message}");
+            }
         }
     }
 }
